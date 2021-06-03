@@ -10,7 +10,7 @@
 <body>
     <header class="header">
         <div class="header__top container">
-            <div class="header__brand">JS Advanced</div>
+            <div class="header__brand render-main">ShopPRO</div>
             <div class="header__hamb">
                 <span></span>
                 <span></span>
@@ -21,12 +21,7 @@
         <nav>
             <div class="container">
             <ul class="header__menu">
-                <li class="header__menu-item">Главная</li>
-                <li class="header__menu-item">menu1</li>
-                <li class="header__menu-item">menu2</li>
-                <li class="header__menu-item">menu3</li>
-                <li class="header__menu-item">menu4</li>
-                <li class="header__menu-item">menu5</li>
+                <li class="header__menu-item render-main">Главная</li>
             </ul>
             </div>
         </nav>
@@ -35,12 +30,12 @@
     
     <main class="container">
         <div class="bradcrumb">
-            <div class="bradcrumb__desc">Домашние задания</div>
-            <div class="bradcrumb__map"><span>Главная</span></div>
+            <div class="bradcrumb__desc">Интернет-магазин</div>
+            <div class="bradcrumb__map"><span class="render-main">Главная</span><span class="bradcrumb__map_changable"></span></div>
         </div>
 
         <section class="page">
-            <h1 class="page__header">Урок 1. Современый Java Script</h1>
+            <h1 class="page__header"></h1>
             <article class="page__content"></article>
         </section>
 
@@ -60,6 +55,22 @@
             const headerMenu=document.querySelector(".header__menu");
             headerMenu.classList.toggle("header__menu-opened");
         });
+
+        const renderMainButtons=document.querySelectorAll(".render-main");
+        renderMainButtons.forEach((item) => item.onclick=function(){renderMain();});
+
+        const breadcrumbMap=document.querySelector(".bradcrumb__map_changable");
+        const pageHeader=document.querySelector(".page__header");
+        const pageContent=document.querySelector(".page__content");
+        
+        window.load=renderMain();
+
+        function renderMain(){
+            breadcrumbMap.innerHTML="";
+            pageHeader.innerHTML="Добро пожаловать в интернет-магазин ShopPRO!";
+            pageContent.innerHTML="Главная страница на разработке!";
+            console.log("Возрват к главной!");
+        }
         
     </script>
     <script src="main.js"></script>
