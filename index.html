@@ -50,11 +50,17 @@
 
     <script>
         const hambMenuIcon=document.querySelector(".header__hamb");
+        const headerMenu=document.querySelector(".header__menu");
+
         hambMenuIcon.addEventListener("click", function(){
             this.classList.toggle("header__hamb_click");     
-            const headerMenu=document.querySelector(".header__menu");
             headerMenu.classList.toggle("header__menu-opened");
         });
+        headerMenu.addEventListener("click",()=>{
+            headerMenu.classList.remove("header__menu-opened");
+            hambMenuIcon.classList.remove("header__hamb_click");
+        });
+        
 
         const renderMainButtons=document.querySelectorAll(".render-main");
         renderMainButtons.forEach((item) => item.onclick=function(){renderMain();});
@@ -63,14 +69,15 @@
         const pageHeader=document.querySelector(".page__header");
         const pageContent=document.querySelector(".page__content");
         
+                
         window.load=renderMain();
 
         function renderMain(){
             breadcrumbMap.innerHTML="";
             pageHeader.innerHTML="Добро пожаловать в интернет-магазин ShopPRO!";
-            pageContent.innerHTML="Главная страница на разработке!";
-            console.log("Возрват к главной!");
+            pageContent.innerHTML="Главная страница на разработке!<br><br>Выберите другие пункты меню";
         }
+
         
     </script>
     <script src="main.js"></script>
