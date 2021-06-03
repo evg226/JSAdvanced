@@ -3,7 +3,7 @@
 // ********************************
 
 // создание меню для Каталога товаров
-const menuItemCatalog = document.createElement("li");
+const menuItemCatalog = document.createElement("li");                         // РЕШЕНИЕ п.1 стили в css-файле 
 menuItemCatalog.classList.add("header__menu-item");
 menuItemCatalog.innerHTML = "Каталог товаров";
 menuItemCatalog.addEventListener("click", renderCatalogPage);
@@ -23,7 +23,7 @@ function renderCatalogPage() {
     ];
     //Функция для формирования верстки каждого товара
     //Добавить в выводе изображение
-    const renderProduct = (title="Товар", price=0) => { // РЕШЕНИЕ п.2 
+    const renderProduct = (title="Товар", price=0) => {                         // РЕШЕНИЕ п.2 
         return `<div class="product-item">
                     <h3 class="product-header">${title}</h3>
                     <div class="product-img">
@@ -38,7 +38,7 @@ function renderCatalogPage() {
     const renderPage = list => {
         const productsList = list.map(item => renderProduct(item.title, item.price));
         pageContent.innerHTML = "<div class='product-box'>"+
-                                    productsList.join("") // РЕШЕНИЕ п.3 
+                                    productsList.join("")                       // РЕШЕНИЕ п.3 
                                 +"</div>"; 
     };
     renderPage(products);
