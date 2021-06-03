@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script: Advanced Level</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__top container">
+            <div class="header__brand">JS Advanced</div>
+            <div class="header__hamb">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    <div class="header__line"></div>
+        <nav>
+            <div class="container">
+            <ul class="header__menu">
+                <li class="header__menu-item">Главная</li>
+                <li class="header__menu-item">menu1</li>
+                <li class="header__menu-item">menu2</li>
+                <li class="header__menu-item">menu3</li>
+                <li class="header__menu-item">menu4</li>
+                <li class="header__menu-item">menu5</li>
+            </ul>
+            </div>
+        </nav>
+<div class="header__line header__line_2"></div>
+    </header>
+    
+    <main class="container">
+        <div class="bradcrumb">
+            <div class="bradcrumb__desc">Домашние задания</div>
+            <div class="bradcrumb__map"><span>Главная</span></div>
+        </div>
+
+        <section class="page">
+            <h1 class="page__header">Урок 1. Современый Java Script</h1>
+            <article class="page__content"></article>
+        </section>
+
+    </main>
+        
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__copyright">Copyright &copy; Evgeny Ivanov 2021</div>
+            <div class="footer__logo">Java Script Advanced</div>
+        </div>
+    </footer>
+
+    <script>
+        const hambMenuIcon=document.querySelector(".header__hamb");
+        hambMenuIcon.addEventListener("click", function(){
+            this.classList.toggle("header__hamb_click");     
+            const headerMenu=document.querySelector(".header__menu");
+            headerMenu.classList.toggle("header__menu-opened");
+        });
+        
+    </script>
+    <script src="main.js"></script>
+    
+    
+</body>
+</html>
