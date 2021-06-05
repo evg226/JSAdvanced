@@ -7,6 +7,7 @@
 *,
 *:before,
 *:after {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -89,26 +90,75 @@ body {
 }
 
 .header__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   min-height: 50px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
 .header__brand {
   font-size: 2.5rem;
   font-weight: 500;
   cursor: pointer;
 }
+
 .header__line {
   width: 100%;
   height: 1px;
   background: #c5c4c4;
 }
+
+.header__cart {
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.header__cart:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0 0 10px #c5c4c4;
+          box-shadow: 0 0 10px #c5c4c4;
+  border-radius: 10px;
+}
+
+.header__cart-count {
+  position: absolute;
+  color: #ffffff;
+  background: #3d3d3d;
+  font-size: 0.9rem;
+  top: -5px;
+  right: 0;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .header__menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .header__menu-item {
   padding: 15px 0;
   max-width: 20%;
@@ -117,59 +167,94 @@ body {
   cursor: pointer;
   list-style-type: none;
   margin: 2px 0;
-  transition: all 0.3s ease;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
   font-size: 1.1rem;
 }
+
 .header__menu-item:hover {
-  transform: scale(1.2);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
   color: #e44a4a;
+  font-weight: 600;
 }
+
 .header__menu-item:first-child {
   text-align: left;
 }
+
 .header__menu-item:first-child:hover {
-  transform: none;
+  -webkit-transform: none;
+          transform: none;
+  font-weight: 400;
 }
+
 .header__hamb {
   width: 40px;
   height: 50px;
   display: none;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   cursor: pointer;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
+
 .header__hamb span {
   width: 100%;
   height: 3px;
   margin: 5px 0;
   background: #3d3d3d;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
   transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
 }
+
 .header__hamb:hover {
-  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
+
 .header__hamb_click span:nth-child(2) {
   background: none;
 }
+
 .header__hamb_click span:first-child {
-  transform: rotate(-45deg) translate(-9px, 9px);
+  -webkit-transform: rotate(-45deg) translate(-9px, 9px);
+          transform: rotate(-45deg) translate(-9px, 9px);
 }
+
 .header__hamb_click span:last-child {
-  transform: rotate(45deg) translate(-9px, -9px);
+  -webkit-transform: rotate(45deg) translate(-9px, -9px);
+          transform: rotate(45deg) translate(-9px, -9px);
 }
 
 .bradcrumb {
   margin: 20px 20px 40px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .bradcrumb__desc {
   font-weight: 600;
 }
+
 .bradcrumb__map span {
   cursor: pointer;
 }
+
 .bradcrumb__map span:hover {
   color: #e44a4a;
 }
@@ -180,6 +265,7 @@ body {
   font-weight: 600;
   margin-bottom: 30px;
 }
+
 .page__content {
   min-height: 500px;
 }
@@ -188,49 +274,78 @@ body {
   background: #3d3d3d;
   color: #d6d4d4;
 }
+
 .footer__container {
   margin-top: 40px;
   min-height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .product-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: -10px;
 }
+
 .product-item {
-  flex: 0 1 23%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 23%;
+          flex: 0 1 23%;
   border: 1px solid #c5c4c4;
   padding: 2% 0;
   margin: 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   cursor: pointer;
   position: relative;
 }
+
 .product-item:hover {
-  box-shadow: 0 0 20px #c5c4c4;
+  -webkit-box-shadow: 0 0 20px #c5c4c4;
+          box-shadow: 0 0 20px #c5c4c4;
   background: #d6d4d4;
 }
+
 .product-item:hover .product-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .product-header {
   text-align: center;
   font-size: 1.1rem;
   font-weight: 600;
   color: #585858;
 }
+
 .product-img {
   height: 200px;
   background: #75acbd;
   margin: 20px 0;
 }
+
 .product-img img {
   width: 100%;
 }
+
 .product-price {
   text-align: right;
   color: #e44a4a;
@@ -238,14 +353,18 @@ body {
   font-weight: 600;
   margin-right: 20px;
 }
+
 .product-button {
   display: none;
   position: absolute;
   left: 0;
   top: 45%;
   width: 100%;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 .product-button button {
   cursor: pointer;
   color: #e44a4a;
@@ -255,6 +374,7 @@ body {
   padding: 8px 18px;
   border: 1px solid #e44a4a;
 }
+
 .product-button button:hover {
   background: #e44a4a;
   color: #f0ecec;
@@ -263,25 +383,35 @@ body {
 
 @media (max-width: 900px) {
   .product-box {
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
   .product-item {
-    flex: 0 0 30%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 30%;
+            flex: 0 0 30%;
   }
 }
+
 @media (max-width: 768px) {
   .header__menu {
     display: none;
   }
   .header__menu-opened {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     position: absolute;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     right: 10px;
     top: 91px;
     padding: 10px 0;
     background: #ffffff;
-    box-shadow: 0 0 10px #c5c4c4;
+    -webkit-box-shadow: 0 0 10px #c5c4c4;
+            box-shadow: 0 0 10px #c5c4c4;
   }
   .header__menu-item {
     padding: 10px 30px;
@@ -290,26 +420,34 @@ body {
     text-align: left;
   }
   .header__menu-item:hover {
-    transform: none;
+    -webkit-transform: none;
+            transform: none;
+    font-weight: 400;
   }
   .header__line_2 {
     display: none;
   }
   .header__hamb {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     position: relative;
   }
-
   .product-item {
-    flex: 1 1 32%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 32%;
+            flex: 1 1 32%;
   }
 }
+
 @media (max-width: 540px) {
   .product-item {
-    flex: 0 0 100%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
   }
-
   .bradcrumb {
     margin: 20px 0 40px 0;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+/*# sourceMappingURL=style.css.map */

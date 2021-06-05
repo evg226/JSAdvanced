@@ -38,6 +38,32 @@ body {
         background: $color-border;
     }
 
+    &__cart{
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 10px 20px;
+        position: relative;
+        &:hover{
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #c5c4c4;
+            border-radius: 10px;
+        }
+        &-count{
+            position: absolute;
+            color: #ffffff;
+            background: #3d3d3d;
+            font-size: 0.9rem;
+            top:-5px;
+            right: 0;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
     &__menu {
         display: flex;
 
@@ -49,19 +75,21 @@ body {
             cursor: pointer;
             list-style-type: none;
             margin: 2px 0;
-            transition: all 0.3s ease;
+            transition: transform 0.5s ease;
             font-size: 1.1rem;
 
             &:hover {
-                transform: scale(1.2);
+                transform: scale(1.1);
                 color: #e44a4a;
+                font-weight: 600;
             }
 
             &:first-child {
                 text-align: left;
-
+              
                 &:hover {
                     transform: none;
+                    font-weight: 400;
                 }
             }
         }
@@ -156,6 +184,7 @@ body {
     &-box {
         display: flex;
         justify-content: space-between;
+        margin: -10px;
     }
 
     &-item {
@@ -272,6 +301,7 @@ body {
 
                 &:hover {
                     transform: none;
+                    font-weight: 400;
                 }
             }
         }
