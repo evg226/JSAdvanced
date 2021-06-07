@@ -13,8 +13,9 @@
     <header class="header">
         <div class="header__top container">
             <div class="header__brand render-main">ShopPRO</div>
+            <div class="header__top-right">
             <div class="header__cart cart_button">
-                <img src="img/cart.jpg" alt="Корзина">
+                <img src="img/cart.png" alt="Корзина">
                 <span class="header__cart-count">0</span>
             </div>
             <div class="header__hamb">
@@ -22,9 +23,10 @@
                 <span></span>
                 <span></span>
             </div>
+            </div>
         </div>
-        <div class="header__line"></div>
-        <nav>
+        <!-- <div class="header__line"></div> -->
+        <nav class="header__menu_wrapper">
             <div class="container">
                 <ul class="header__menu">
                     <li class="header__menu-item render-main">Главная</li>
@@ -34,17 +36,21 @@
         <div class="header__line header__line_2"></div>
     </header>
 
-    <main class="container">
-        <div class="bradcrumb">
-            <div class="bradcrumb__desc">Интернет-магазин</div>
-            <div class="bradcrumb__map"><span class="render-main">Главная</span><span
-                    class="bradcrumb__map_changable"></span></div>
-        </div>
+    <main>
 
+        <div class="bradcrumb">
+            <div class="bradcrumb__container container">
+                <div class="bradcrumb__desc">Интернет-магазин</div>
+                <div class="bradcrumb__map"><span class="render-main">Главная</span><span
+                        class="bradcrumb__map_changable"></span></div>
+            </div>
+        </div>
+        <div class="container">
         <section class="page">
             <h1 class="page__header"></h1>
             <article class="page__content"></article>
         </section>
+        </div>
 
     </main>
 
@@ -88,7 +94,7 @@
 
 
     </script>
-    <script src="main.js"></script>
+    <script src="HW1.js"></script>
 
 
 </body>

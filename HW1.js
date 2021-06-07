@@ -26,15 +26,20 @@ function renderCatalogPage() {
     // *************************
     // РЕШЕНИЕ п.2. Добавляем параметры по умолчанию.
     //  Для сокращения записи arrow function убираем фиругные скобки и return
-    const renderProduct = (title = "Товар", price = 0) => `<div class="product-item">
+    const renderProduct = (title = "Товар", price = 0) => `
+                <div class="product-item">
+                <div class="product-item-in">
                     <h3 class="product-header">${title}</h3>
                     <div class="product-img">
-                        <img src="img/${title}.img" alt="рисунок- ${title}">
+                        <img src="img/${title}.png" alt="рисунок-${title}">
                     </div>
                     <p class="product-price">${price}$</p>
-                    <div class="product-button">
-                        <button class="buy-btn">Купить</button>
-                    </div>
+                </div>
+                <div class="product-button">
+                    <div class="product-button-buy buy-btn">
+                    <img src="img/cart.png">
+                    Купить</div>
+                </div>
                 </div>`;
 
     const renderPage = list => {
