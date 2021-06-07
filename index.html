@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,31 +8,37 @@
     <title>Java Script: Advanced Level</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header class="header">
         <div class="header__top container">
             <div class="header__brand render-main">ShopPRO</div>
+            <div class="header__cart cart_button">
+                <img src="img/cart.jpg" alt="Корзина">
+                <span class="header__cart-count">0</span>
+            </div>
             <div class="header__hamb">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
-    <div class="header__line"></div>
+        <div class="header__line"></div>
         <nav>
             <div class="container">
-            <ul class="header__menu">
-                <li class="header__menu-item render-main">Главная</li>
-            </ul>
+                <ul class="header__menu">
+                    <li class="header__menu-item render-main">Главная</li>
+                </ul>
             </div>
         </nav>
-<div class="header__line header__line_2"></div>
+        <div class="header__line header__line_2"></div>
     </header>
-    
+
     <main class="container">
         <div class="bradcrumb">
             <div class="bradcrumb__desc">Интернет-магазин</div>
-            <div class="bradcrumb__map"><span class="render-main">Главная</span><span class="bradcrumb__map_changable"></span></div>
+            <div class="bradcrumb__map"><span class="render-main">Главная</span><span
+                    class="bradcrumb__map_changable"></span></div>
         </div>
 
         <section class="page">
@@ -40,7 +47,7 @@
         </section>
 
     </main>
-        
+
     <footer class="footer">
         <div class="footer__container container">
             <div class="footer__copyright">Copyright &copy; Evgeny Ivanov 2021</div>
@@ -49,39 +56,41 @@
     </footer>
 
     <script>
-        const hambMenuIcon=document.querySelector(".header__hamb");
-        const headerMenu=document.querySelector(".header__menu");
+        const hambMenuIcon = document.querySelector(".header__hamb");
+        const headerMenu = document.querySelector(".header__menu");
 
-        hambMenuIcon.addEventListener("click", function(){
-            this.classList.toggle("header__hamb_click");     
+        hambMenuIcon.addEventListener("click", function () {
+            this.classList.toggle("header__hamb_click");
             headerMenu.classList.toggle("header__menu-opened");
         });
-        headerMenu.addEventListener("click",()=>{
+        headerMenu.addEventListener("click", () => {
             headerMenu.classList.remove("header__menu-opened");
             hambMenuIcon.classList.remove("header__hamb_click");
         });
-        
 
-        const renderMainButtons=document.querySelectorAll(".render-main");
-        renderMainButtons.forEach((item) => item.onclick=function(){renderMain();});
 
-        const breadcrumbMap=document.querySelector(".bradcrumb__map_changable");
-        const pageHeader=document.querySelector(".page__header");
-        const pageContent=document.querySelector(".page__content");
-        
-                
-        window.load=renderMain();
+        const renderMainButtons = document.querySelectorAll(".render-main");
+        renderMainButtons.forEach((item) => item.onclick = function () { renderMain(); });
 
-        function renderMain(){
-            breadcrumbMap.innerHTML="";
-            pageHeader.innerHTML="Добро пожаловать в интернет-магазин ShopPRO!";
-            pageContent.innerHTML="Главная страница на разработке!<br><br>Выберите другие пункты меню";
+        const breadcrumbMap = document.querySelector(".bradcrumb__map_changable");
+        const pageHeader = document.querySelector(".page__header");
+        const pageContent = document.querySelector(".page__content");
+
+
+        window.load = renderMain();
+
+        function renderMain() {
+            breadcrumbMap.innerHTML = "";
+            pageHeader.innerHTML = "Добро пожаловать в интернет-магазин ShopPRO!";
+
+            pageContent.innerHTML = "Главная страница на разработке!<br><br>Выберите другие пункты меню";
         }
 
-        
+
     </script>
     <script src="main.js"></script>
-    
-    
+
+
 </body>
+
 </html>
