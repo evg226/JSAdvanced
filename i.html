@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<form>
+    <fieldset class="input-group">
+    <input type="radio" name="base" checked> <span>Большой</span>
+    <input type="radio" name="base"><span>Маленький</span>
+    </fieldset>
+    <fieldset class="input-group">
+    <input type="radio" name="filling" checked><span>Сыр</span>
+    <input type="radio" name="filling"><span>Салат</span>
+    <input type="radio" name="filling"><span>Картофель</span>
+    </fieldset>
+    <fieldset class="input-group">
+    <input type="checkbox" name="spice"><span>Приправа</span>
+    <input type="checkbox" name="maioneisse"><span>Майонез</span>
+    </fieldset>
+    <div class="total">Итого: <span>0</span></div>
+
+    <div class="total">
+        <div class="total__price">Стоимость: <span id="totalPrice"></span> </div>
+        <div class="total__calories">Калрийность: <span id="totalCalories"></span> </div>
+    </div>
+
+</form>
+    
+</body>
+</html>

@@ -86,29 +86,25 @@ body {
         }
 
         &-item {
-            padding: 15px 0;
-            max-width: 20%;
-            min-width: 12%;
-            text-align: center;
+            padding: 15px 20px;
             cursor: pointer;
             list-style-type: none;
-            margin: 2px 0;
-            transition: transform 0.5s ease;
+            // margin: 2px 0;
+            transition: all 0.5s ease;
             font-size: 1.1rem;
             color: #b1b6ff;
 
             &:hover {
-                transform: scale(1.2);
                 color: #ffffff;
                 font-weight: 500;
+                background: #030a74;
             }
 
             &:first-child {
-                text-align: left;
+                padding-left: 0;
 
                 &:hover {
-                    transform: none;
-                    font-weight: 400;
+                    background: inherit;
                 }
             }
         }
@@ -318,6 +314,73 @@ body {
     }
 }
 
+.hamburger {
+    &__container {
+        color: #3840ad;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        flex-wrap: wrap;
+    }
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #b1b6ff;
+        margin: 2% 1%;
+        padding: 1%;
+        flex: 0 0 31%;
+        transition: all 0.2s ease;
+        justify-content: space-evenly;
+
+        &:hover {
+            box-shadow: 0 0 10px;
+        }
+    }
+
+    &__element {
+        padding: 10px 0;
+        cursor: pointer;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.5s ease;
+
+        &-caption {
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        &-params {
+            display: flex;
+            justify-content: space-evenly;
+            width: 80%;
+            color: #ff4444;
+        }
+
+        & span {
+            margin-top: 10px;
+        }
+
+        &:hover {
+            background: #d9dbff;
+            border-radius: 30px;
+        }
+    }
+
+    &__total {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: -25px;
+        right: 10px;
+        width: 350px;
+        font-size: 1.1rem;
+        color: #ff4444;
+    }
+}
+
 @media (max-width:900px) {
     .product {
         &-box {
@@ -386,6 +449,13 @@ body {
             flex: 1 1 32%;
         }
     }
+
+    .hamburger {
+
+        &__group {
+            flex: 0 0 48%;
+        }
+    }
 }
 
 @media (max-width:540px) {
@@ -404,4 +474,12 @@ body {
     .bradcrumb {
         margin: 20px 0 40px 0;
     }
+
+    .hamburger {
+
+        &__group {
+            flex: 0 0 98%;
+        }
+    }
+
 }

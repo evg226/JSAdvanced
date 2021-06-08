@@ -140,121 +140,129 @@ menuItemHamburger.innerHTML = "Гамбургер";
 menuItemHamburger.addEventListener("click", renderHamburger);
 headerMenu.append(menuItemHamburger);
 
+
+
+
+
 function renderHamburger() {
-     breadcrumbMap.innerHTML = ` / ${menuItemHamburger.innerHTML}`;
+    breadcrumbMap.innerHTML = ` / ${menuItemHamburger.innerHTML}`;
     pageContent.innerHTML = "";
     pageHeader.innerHTML = menuItemHamburger.innerHTML;
 
-    let hamb = new Hamburger("small", "cheese");
-    hamb.insertAdditional("spice");
-    console.log(hamb);
-    
+    let hamb = new Hamburger(".page__content");
 }
 
 class Hamburger{
-    constructor(size,filling) {
+    constructor(container=".container") {
+        this.container = document.createElement("form");
+        this.container.name = "hamb";
+        this.container.classList.add("hamburger__container");
+        // this.container.classList.add("product-box");
+        document.querySelector(container).insertAdjacentElement("beforeend",this.container);
+        this.options = [];
         this.price = 0;
         this.caloricValue = 0;
-        this.make(size);
-        this.insertFilling(filling);
+        this._fetchOptions();
+        this.render();
+        this.calculatePrice();
     }
-    make(size) {
-        let hambBase = new HambBase().get(size);
-        this.size = hambBase.size;
-        this.price += hambBase.price;
-        this.caloricValue+=hambBase.caloricValue;
-    }
-    insertFilling(filling) {
-        let hambFilling = new HambFilling().get(filling);
-        this.filling=hambFilling.filling
-        this.price += hambFilling.price;
-        this.caloricValue+=hambFilling.caloricValue;
 
-    }
-    insertAdditional(additional) {
-        let hambAdditional = new HambAdditional().get(additional);
-        this.additional = hambAdditional.additional;
-        this.price += hambAdditional.price;
-        this.caloricValue+=hambAdditional.caloricValue;
-
-    }
-}
-
-class HambBase{
-    constructor() {
-        this.types = [];
-        this._fetchHambTypes();
-    }
-    _fetchHamb() {
-        this.types=[
-            { size: "small", price: 50, caloricValue: 20},
-            { size: "big", price: 100, caloricValue: 20 }
+    _fetchOptions() {
+        this.options[0] = [
+            { type: "base", name: "small", fullname: "Маленький", price: 50, caloricValue: 20, checked: false },
+            { type: "base", name: "big", fullname: "Большой", price: 100, caloricValue: 40, checked: true },
+        ];
+        this.options [1]= [
+            { type: "fill", name: "cheese", fullname: "Сыр", price: 10, caloricValue: 20, checked: true },
+            { type:"fill", name: "salad",fullname: "Салат", price: 20, caloricValue: 5, checked:false },
+            { type:"fill", name: "potato",fullname: "Картофель", price: 15, caloricValue: 10, checked:false },
+        ];
+        this.options [2]= [
+            { type: "adds", name: "spice", fullname: "Перец", price: 15, caloricValue: 0, checked: false },
+            { type:"adds", name: "mainonaise",fullname: "Майонез", price: 20, caloricValue: 5, checked:false }
         ];
     }
-    get(size) {
-        for (let item of this.types) {
-            if (size == item.size) {
-                return item;
-            } 
+
+    render() {
+        for (let index in this.options) {
+            let optionGroup = document.createElement("div");
+            optionGroup.classList.add("hamburger__group");
+            this.container.append(optionGroup);
+            optionGroup.onclick = this.setCheck;
+            for (let optionItem of this.options[index]) {
+                let optionItemElement = new OptionItem(optionItem);
+                optionGroup.insertAdjacentHTML("beforeend", optionItemElement.render());
+                optionGroup.addEventListener("change", this.calculatePrice);
+            }
         }
-        return "Неправильный тип";
+        this.container.insertAdjacentHTML("beforeend", `<div class="hamburger__total">
+                        <div class="total__price">Стоимость: <span id="totalPrice"></span> </div>
+                        <div class="total__calories">Калорийность: <span id="totalCalories"></span> </div>
+                        </div>`);
+    }
+    calculatePrice() {
+        this.price = 0;
+        this.caloricValue = 0;
+        for (let currentInput of document.forms["hamb"].elements) {
+            if (currentInput.checked) {
+                this.price += +currentInput.getAttribute("price");
+                this.caloricValue += +currentInput.getAttribute("caloricValue");
+            }
+        }
+        document.querySelector("#totalCalories").innerHTML = this.caloricValue;
+        document.querySelector("#totalPrice").innerHTML = this.price + "$";
+    }
+
+    setCheck(e) {
+        let attr = e.target.getAttribute("value");
+        if (attr) {
+            let input = document.querySelector(`input[value=${attr}]`);
+            if (input.type == "checkbox") {
+                input.checked = !input.checked;
+            }
+            else {
+                input.checked = true;
+            }
+            // this.calculatePrice();
+            this.price = 0;
+            this.caloricValue = 0;
+            for (let currentInput of document.forms["hamb"].elements) {
+                if (currentInput.checked) {
+                    this.price += +currentInput.getAttribute("price");
+                    this.caloricValue += +currentInput.getAttribute("caloricValue");
+                }
+            }
+            document.querySelector("#totalCalories").innerHTML = this.caloricValue;
+            document.querySelector("#totalPrice").innerHTML = this.price + "$";
+        }
     }
 }
 
-class HambFilling{
-    constructor() {
-        this.fillingTypes = [];
-        this._fetchHambFillings();
+class OptionItem{
+    constructor(currrentOption) {
+        this.type = currrentOption.type;
+        this.name = currrentOption.name;
+        this.fullname = currrentOption.fullname;
+        this.price = currrentOption.price ;
+        this.caloricValue = currrentOption.caloricValue ;
+        this.checked = currrentOption.checked ;
     }
-    _fetchHambFillings() {
-        this.fillingTypes = [
-            { filling: "cheese", price: 10, caloricValue: 20 },
-            { filling: "salad", price: 20, caloricValue: 5 },
-            { filling: "potato", price: 15, caloricValue: 10 },
-        ];
-
-    }
-    get(filling) {
-        for (let item of this.fillingTypes) {
-            if (filling == item.filling) {
-                return item;
-            } 
-        }
-        return "Неправильный наполнитель";
-    }
-}
-
-class HambAdditional{
-    constructor() {
-        this.additionalTypes = [];
-        this._fetchHambAdditionals();
-    }
-    _fetchHambAdditionals() {
-        this.fillingTypes = [
-            { additional: "spice", price: 15, caloricValue: 0 },
-            { additional: "mainonaise", price: 20, caloricValue: 5 },
-        ];
-
-    }
-    get(additional) {
-        for (let item of this.fillingTypes) {
-            if (additional == item.additional) {
-                return item;
-            } 
-        }
-        return "Неправильная добавка";
+    render() {
+        return `
+        <div class="hamburger__element" value="${this.name}">
+            <input
+                class="${this.type}"
+                type="${this.type == 'adds' ? 'checkbox' : 'radio'}" 
+                name="${this.type}" ${this.checked ? 'checked' : ''}
+                price="${this.price}"
+                caloricValue="${this.caloricValue}"
+                value="${this.name}">
+            <span value="${this.name}" class="hamburger__element-caption">${this.fullname}</span>
+            <div class="hamburger__element-params">
+                <span value="${this.name}">Цена: ${this.price}$</span>
+                <span value="${this.name}">ККал: ${this.caloricValue}</span>
+            </div>
+        </div>
+        `;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
