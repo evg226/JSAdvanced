@@ -223,7 +223,7 @@ class Hamburger{
             else {
                 input.checked = true;
             }
-            // this.calculatePrice();
+            // this.calculatePrice(); Дублирующий код функция не запускается
             this.price = 0;
             this.caloricValue = 0;
             for (let currentInput of document.forms["hamb"].elements) {
