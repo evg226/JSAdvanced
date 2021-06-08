@@ -11,13 +11,13 @@ menuItemCatalogV2.innerHTML = "Каталог (ver2)";
 menuItemCatalogV2.addEventListener("click", renderCatalogPageV2);
 headerMenu.append(menuItemCatalogV2);
 
-
 function renderCatalogPageV2() {
     breadcrumbMap.innerHTML = ` / ${menuItemCatalogV2.innerHTML}`;
     pageContent.innerHTML = "";
     pageHeader.innerHTML = menuItemCatalogV2.innerHTML;
 
     let productList = new ProductList(".page__content");
+
 }
 
 class ProductList{
@@ -129,6 +129,125 @@ class CartProduct{
         `;
     }
 }
+
+
+
+// п.3 Гамбургер
+
+const menuItemHamburger = document.createElement("li");
+menuItemHamburger.classList.add("header__menu-item");
+menuItemHamburger.innerHTML = "Гамбургер";
+menuItemHamburger.addEventListener("click", renderHamburger);
+headerMenu.append(menuItemHamburger);
+
+function renderHamburger() {
+     breadcrumbMap.innerHTML = ` / ${menuItemHamburger.innerHTML}`;
+    pageContent.innerHTML = "";
+    pageHeader.innerHTML = menuItemHamburger.innerHTML;
+
+    let hamb = new Hamburger("small", "cheese");
+    hamb.insertAdditional("spice");
+    console.log(hamb);
+    
+}
+
+class Hamburger{
+    constructor(size,filling) {
+        this.price = 0;
+        this.caloricValue = 0;
+        this.make(size);
+        this.insertFilling(filling);
+    }
+    make(size) {
+        let hambBase = new HambBase().get(size);
+        this.size = hambBase.size;
+        this.price += hambBase.price;
+        this.caloricValue+=hambBase.caloricValue;
+    }
+    insertFilling(filling) {
+        let hambFilling = new HambFilling().get(filling);
+        this.filling=hambFilling.filling
+        this.price += hambFilling.price;
+        this.caloricValue+=hambFilling.caloricValue;
+
+    }
+    insertAdditional(additional) {
+        let hambAdditional = new HambAdditional().get(additional);
+        this.additional = hambAdditional.additional;
+        this.price += hambAdditional.price;
+        this.caloricValue+=hambAdditional.caloricValue;
+
+    }
+}
+
+class HambBase{
+    constructor() {
+        this.types = [];
+        this._fetchHambTypes();
+    }
+    _fetchHamb() {
+        this.types=[
+            { size: "small", price: 50, caloricValue: 20},
+            { size: "big", price: 100, caloricValue: 20 }
+        ];
+    }
+    get(size) {
+        for (let item of this.types) {
+            if (size == item.size) {
+                return item;
+            } 
+        }
+        return "Неправильный тип";
+    }
+}
+
+class HambFilling{
+    constructor() {
+        this.fillingTypes = [];
+        this._fetchHambFillings();
+    }
+    _fetchHambFillings() {
+        this.fillingTypes = [
+            { filling: "cheese", price: 10, caloricValue: 20 },
+            { filling: "salad", price: 20, caloricValue: 5 },
+            { filling: "potato", price: 15, caloricValue: 10 },
+        ];
+
+    }
+    get(filling) {
+        for (let item of this.fillingTypes) {
+            if (filling == item.filling) {
+                return item;
+            } 
+        }
+        return "Неправильный наполнитель";
+    }
+}
+
+class HambAdditional{
+    constructor() {
+        this.additionalTypes = [];
+        this._fetchHambAdditionals();
+    }
+    _fetchHambAdditionals() {
+        this.fillingTypes = [
+            { additional: "spice", price: 15, caloricValue: 0 },
+            { additional: "mainonaise", price: 20, caloricValue: 5 },
+        ];
+
+    }
+    get(additional) {
+        for (let item of this.fillingTypes) {
+            if (additional == item.additional) {
+                return item;
+            } 
+        }
+        return "Неправильная добавка";
+    }
+}
+
+
+
 
 
 
