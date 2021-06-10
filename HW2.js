@@ -162,10 +162,10 @@ function renderHamburger() {
     pageContent.innerHTML = "";
     pageHeader.innerHTML = menuItemHamburger.innerHTML;
 
-    let hamb = new Hamburger(".page__content");
+    let hamb = new HamburgerPage(".page__content");
 }
 
-class Hamburger{
+class HamburgerPage{
     constructor(targetContainer) {
         
         this.options = [];
