@@ -217,11 +217,9 @@ class Hamburger{
             optionGroup.classList.add("hamburger__group");
             this.container.append(optionGroup);
             for (let optionItem of this.options[index]) {
-                let optionItemElement = new OptionItem(optionItem);
-                optionGroup.insertAdjacentHTML("beforeend", optionItemElement.render());
-                optionGroup.addEventListener("change", this.calculatePrice);
-            }
-            optionGroup.onclick = (e) => {
+                let optionItemElement = new OptionItem(optionItem).getElement();
+                optionGroup.insertAdjacentElement("beforeend", optionItemElement);
+                optionItemElement.onclick = (e) => {
                 let attr = e.target.getAttribute("value");
                 if (attr) {
                     let input = document.querySelector(`input[value=${attr}]`);
@@ -233,8 +231,10 @@ class Hamburger{
                         input.checked = true;
                     }
                     this.calculatePrice();
-                };
+                    }
+                }
             }
+            
         }
         
     }
@@ -261,9 +261,11 @@ class OptionItem{
         this.caloricValue = currrentOption.caloricValue ;
         this.checked = currrentOption.checked ;
     }
-    render() {
-        return `
-        <div class="hamburger__element" value="${this.name}">
+    getElement() {
+        let element = document.createElement("div");
+        element.classList.add("hamburger__element");
+        element.setAttribute("value", `${this.name}`);
+        element.insertAdjacentHTML("beforeend",`        
             <input
                 class="${this.type}"
                 type="${this.type == 'adds' ? 'checkbox' : 'radio'}" 
@@ -276,8 +278,8 @@ class OptionItem{
             <div class="hamburger__element-params">
                 <span value="${this.name}">Цена: ${this.price}$</span>
                 <span value="${this.name}">ККал: ${this.caloricValue}</span>
-            </div>
-        </div>
-        `;
+            </div>`);
+        return element;
+        
     }
 }
