@@ -167,17 +167,14 @@ function renderHamburger() {
 
 class HamburgerPage{
     constructor(targetContainer) {
-        
         this.options = [];
-        this.price = 0;
-        this.caloricValue = 0;
         this.renderCaptions(targetContainer);
         this._fetchOptions();
-        this.render();
-        this.calculatePrice();
+        this.renderBox();
+        this.hamburger = new Hamburger(); //на странице возможен один гамбургер для  включения в заказ
     }
 
-    _fetchOptions() {
+    _fetchOptions() { //загрузка перечня опций гамбургера (в будущем из бэкэнда)
         this.options[0] = [
             { type: "base", name: "small", fullname: "Маленький", price: 50, caloricValue: 20, checked: false },
             { type: "base", name: "big", fullname: "Большой", price: 100, caloricValue: 40, checked: true },
@@ -193,7 +190,7 @@ class HamburgerPage{
         ];
     }
 
-    renderCaptions(targetContainer) {
+    renderCaptions(targetContainer) { //отрисовка формы с заголовком и итогами
         let targetContainerElement=document.querySelector(targetContainer);
         this.container = document.createElement("form");
         this.container.name = "hamb";
@@ -211,44 +208,33 @@ class HamburgerPage{
                         </div>`);
     }
 
-    render() {
+    renderBox() { //отрисовка бокса с выбором опций гамбургера
         for (let index in this.options) {
-            let optionGroup = document.createElement("div");
+            let optionGroup = document.createElement("div"); //группа опций
             optionGroup.classList.add("hamburger__group");
             this.container.append(optionGroup);
-            for (let optionItem of this.options[index]) {
+            for (let optionItem of this.options[index]) {  //опция гамбургера
                 let optionItemElement = new OptionItem(optionItem).getElement();
                 optionGroup.insertAdjacentElement("beforeend", optionItemElement);
-                optionItemElement.onclick = (e) => {
-                let attr = e.target.getAttribute("value");
-                if (attr) {
-                    let input = document.querySelector(`input[value=${attr}]`);
-                    if (input.type == "checkbox") {
-                        if (e.target!=input){
-                            input.checked = !input.checked;
-                            }
-                    } else {
-                        input.checked = true;
-                    }
-                    this.calculatePrice();
-                    }
-                }
+                optionItemElement.addEventListener("change", () => this.hamburger = new Hamburger()); //создается новый гамбургер
+                optionItemElement.addEventListener("click", this.changeInput);
             }
-            
         }
-        
     }
-    calculatePrice() {
-        this.price = 0;
-        this.caloricValue = 0;
-        for (let currentInput of document.forms["hamb"].elements) {
-            if (currentInput.checked) {
-                this.price += +currentInput.getAttribute("price");
-                this.caloricValue += +currentInput.getAttribute("caloricValue");
+
+    changeInput(e) { //при нажатии на блок с рисуноком меняется input
+        let input = document.querySelector(`input[value=${this.getAttribute("value")}]`);
+        let inputBeforeChecked = input.checked;
+        if (input.type == "radio") {
+            input.checked = true;
+        } else {
+            if (e.target != input) {
+                input.checked = !input.checked;
             }
         }
-        document.querySelector("#totalCalories").innerHTML = this.caloricValue;
-        document.querySelector("#totalPrice").innerHTML = this.price + "$";
+        if (input.checked != inputBeforeChecked) {
+            this.dispatchEvent(new Event("change"));
+        }
     }
 }
 
@@ -261,7 +247,8 @@ class OptionItem{
         this.caloricValue = currrentOption.caloricValue ;
         this.checked = currrentOption.checked ;
     }
-    getElement() {
+
+    getElement() { //отрисовка элемента с опцией гамбургера
         let element = document.createElement("div");
         element.classList.add("hamburger__element");
         element.setAttribute("value", `${this.name}`);
@@ -280,6 +267,22 @@ class OptionItem{
                 <span value="${this.name}">ККал: ${this.caloricValue}</span>
             </div>`);
         return element;
-        
+    }
+}
+
+class Hamburger{  //гамбургер
+    constructor() {
+        this.price = 0;
+        this.caloricValue = 0;
+        this.calculate();
+    }
+
+    calculate() { //расчет итоговых значений гамбургера и запись на страницу
+        for (let currentInput of document.forms["hamb"].elements) {
+            currentInput.checked && (this.price += +currentInput.getAttribute("price"),this.caloricValue += +currentInput.getAttribute("caloricValue"));
+        }
+        document.querySelector("#totalCalories").innerHTML = this.caloricValue;
+        document.querySelector("#totalPrice").innerHTML = this.price + "Р";
+        console.log("создан гамбургер!");
     }
 }
