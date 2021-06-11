@@ -83,7 +83,7 @@ body {
             display: flex;
             justify-content: space-between;
             border-bottom: 1px solid #c6caff;
-            margin-bottom: 10px;
+            // margin-bottom: 10px;
         }
 
         &-header {
@@ -116,6 +116,7 @@ body {
             box-shadow: 0 0 10px #6b73eb;
             padding: 0 10px 10px 10px;
             color: #414ce4;
+            z-index: 2;
 
             &_visible {
                 display: block;
@@ -211,8 +212,88 @@ body {
     }
 }
 
-#cart {
+.cart {
     padding: 10px;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 150px 60px 70px 90px 20px;
+        grid-template-rows: 25px;
+        align-items: center;
+
+        & input {
+            border: 1px solid #c6caff;
+            padding: 2px 5px;
+            color: inherit;
+            margin-left: 12px;
+        }
+
+        &_top {
+            font-size: 1.05rem;
+            grid-template-rows: 30px;
+            color: #1725e6;
+            border-bottom: 1px solid #c6caff;
+            margin-bottom: 7px;
+            background-color: #f4f4fc;
+
+        }
+
+        &:hover {
+            background: #f4f4fc;
+        }
+    }
+
+    &__name {
+        margin-left: 5px;
+    }
+
+    &__price,
+    &__sum,
+    &__quantity {
+        text-align: center;
+    }
+
+    &__remove {
+        border-radius: 12px;
+        padding: 4px 0;
+        width: 20px;
+        font-size: 0.6rem;
+        text-align: center;
+    }
+
+    &__total {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 20px 0 10px;
+
+        &-head {
+            margin-right: 20px;
+        }
+
+        &-quantity {
+            margin-right: 20px;
+        }
+
+        &-sum {
+            margin-right: 20px;
+            color: #ff4444;
+        }
+
+        &-button {
+            padding: 8px 20px;
+            border: 1px solid #ff4444;
+            color: #ff4444;
+            cursor: pointer;
+            transition: background 0.5s ease;
+
+            &:hover {
+                background: #ff4444;
+                color: #ffffff;
+
+            }
+        }
+    }
 }
 
 .bradcrumb {
