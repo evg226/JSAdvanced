@@ -371,8 +371,8 @@ body {
             position: absolute;
             left: 10px;
             top: 40%;
-            width: 25px;
-            height: 25px;
+            transform: scale(1.7); // width: 25px;
+            // height: 25px;
 
         }
 
@@ -556,8 +556,8 @@ body {
 
         &__element input {
             left: 10%;
-            width: 20px;
-            height: 20px;
+            transform: scale(1.7); // width: 20px;
+            // height: 20px;
         }
 
         &__total {

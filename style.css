@@ -371,8 +371,7 @@ body {
   position: absolute;
   left: 10px;
   top: 40%;
-  width: 25px;
-  height: 25px;
+  transform: scale(1.7);
 }
 .hamburger__element img {
   width: 200px;
@@ -505,8 +504,7 @@ body {
   }
   .hamburger__element input {
     left: 10%;
-    width: 20px;
-    height: 20px;
+    transform: scale(1.7);
   }
   .hamburger__total {
     font-size: 1rem;
