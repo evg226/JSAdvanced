@@ -14,15 +14,22 @@
         <div class="header__top container">
             <div class="header__brand render-main">ShopPRO</div>
             <div class="header__top-right">
-            <div class="header__cart cart_button">
-                <img src="img/cart.png" alt="Корзина">
-                <span class="header__cart-count">0</span>
-            </div>
-            <div class="header__hamb">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+                <div class="header__cart cart_button">
+                    <img src="img/cart.png" alt="Корзина">
+                    <span class="header__cart-count">0</span>
+                </div>
+                <div class="header__hamb">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="header__cart-body">
+                    <div class="header__cart-top">
+                        <div class="header__cart-header">Корзина</div>
+                        <div class="header__cart-close">x</div>
+                    </div>
+                    <div id="cart">Добавьте товары в корзину</div>    
+                </div>
             </div>
         </div>
         <!-- <div class="header__line"></div> -->
@@ -74,6 +81,15 @@
             hambMenuIcon.classList.remove("header__hamb_click");
         });
 
+        const cartButton=document.querySelector(".cart_button");
+        const cartBox=document.querySelector(".header__cart-body");
+        const cartClose=document.querySelector(".header__cart-close");
+        cartButton.addEventListener("click", function(){
+            cartBox.classList.toggle("header__cart-body_visible");
+        });
+        cartClose.addEventListener("click", function(){
+            cartBox.classList.remove("header__cart-body_visible");
+        });
 
         const renderMainButtons = document.querySelectorAll(".render-main");
         renderMainButtons.forEach((item) => item.onclick = function () { renderMain(); });
@@ -96,6 +112,7 @@
     </script>
     <script src="HW1.js"></script>
     <script src="HW2.js"></script>
+    <script src="hw3.js"></script>
 
 
 </body>
