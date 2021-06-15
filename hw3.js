@@ -3,7 +3,7 @@
 // ********************************
 const menuItemCatalogV3 = document.createElement("li");
 menuItemCatalogV3.classList.add("header__menu-item");
-menuItemCatalogV3.innerHTML = "Каталог (HW3,4)";
+menuItemCatalogV3.innerHTML = "Каталог <span>(HW3,4)</span>";
 menuItemCatalogV3.addEventListener("click", renderCatalogPageV3);
 headerMenu.append(menuItemCatalogV3);
 

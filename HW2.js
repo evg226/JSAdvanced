@@ -9,7 +9,7 @@
 
 const menuItemCatalogV2 = document.createElement("li");
 menuItemCatalogV2.classList.add("header__menu-item");
-menuItemCatalogV2.innerHTML = "Каталог (HW2)";
+menuItemCatalogV2.innerHTML = "Каталог <span>(HW2)</span>";
 menuItemCatalogV2.addEventListener("click", renderCatalogPageV2);
 headerMenu.append(menuItemCatalogV2);
 
@@ -81,7 +81,7 @@ class ProductItem{
                     <p class="product-price">${this.price}$</p>
                 </div>
                 <div class="product-button">
-                    <div class="product-button-buy buy-btn">
+                    <div class="product-button-buy buy-btn" onclick="alert('Корзина реализована в HW3');">
                     <img src="img/cart.png">
                     Купить</div>
                 </div>
@@ -153,7 +153,7 @@ class CartProduct{
 // **************************
 const menuItemHamburger = document.createElement("li");
 menuItemHamburger.classList.add("header__menu-item");
-menuItemHamburger.innerHTML = "Гамбургер (HW2)";
+menuItemHamburger.innerHTML = "Гамбургер <span>(HW2)</span>";
 menuItemHamburger.addEventListener("click", renderHamburger);
 headerMenu.append(menuItemHamburger);
 
@@ -204,7 +204,7 @@ class HamburgerPage{
                         <div class="hamburger__total">
                             <div class="hamburger__total-price">Итого: <span id="totalPrice"></span> </div>
                             <div class="hamburger__total-calories">Калорий: <span id="totalCalories"></span></div>
-                            <div class="hamburger__total-order">Заказать</div>
+                            <div class="hamburger__total-order" onclick="alert('Заказ принят!');">Заказать</div>
                         </div>`);
     }
 

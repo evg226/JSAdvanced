@@ -171,6 +171,11 @@ body {
             transition: all 0.5s ease;
             font-size: 1.1rem;
             color: #b1b6ff;
+            line-height: 1.3rem;
+
+            & span {
+                font-size: 0.9rem;
+            }
 
             &:hover {
                 color: #ffffff;
