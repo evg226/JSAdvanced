@@ -90,6 +90,7 @@ class ProductElement {
 class CartPro{
     constructor(container = "#cart", api) {
         this.containerElement = document.querySelector(container);
+        this.containerElement.innerHTML = "";
         this.api = api;
         this.totalEl = document.querySelector("#cart__total");
         this.quantityEl = document.querySelector("#cart__quantity");
