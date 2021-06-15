@@ -5,7 +5,7 @@
 // создание меню для Каталога товаров
 const menuItemCatalog = document.createElement("li");      // РЕШЕНИЕ п.1 Добавляем меню стили в css-файле 
 menuItemCatalog.classList.add("header__menu-item");
-menuItemCatalog.innerHTML = "Каталог";
+menuItemCatalog.innerHTML = "Каталог (HW1)";
 menuItemCatalog.addEventListener("click", renderCatalogPage);
 headerMenu.append(menuItemCatalog);
 
