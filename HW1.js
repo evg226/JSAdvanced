@@ -5,7 +5,7 @@
 // создание меню для Каталога товаров
 const menuItemCatalog = document.createElement("li");      // РЕШЕНИЕ п.1 Добавляем меню стили в css-файле 
 menuItemCatalog.classList.add("header__menu-item");
-menuItemCatalog.innerHTML = "Каталог";
+menuItemCatalog.innerHTML = "Каталог <span>(HW1)</span>";
 menuItemCatalog.addEventListener("click", renderCatalogPage);
 headerMenu.append(menuItemCatalog);
 
@@ -36,7 +36,7 @@ function renderCatalogPage() {
                     <p class="product-price">${price}$</p>
                 </div>
                 <div class="product-button">
-                    <div class="product-button-buy buy-btn">
+                    <div class="product-button-buy buy-btn" onclick="alert('Корзина реализована в HW3');">
                     <img src="img/cart.png">
                     Купить</div>
                 </div>
