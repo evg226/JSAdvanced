@@ -566,6 +566,56 @@ body {
   background: #882424;
 }
 
+.callback__form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-left: 30px;
+  max-height: 500px;
+}
+.callback__item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+.callback__item img {
+  width: 70px;
+  border-radius: 50%;
+}
+.callback__item div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0 60px 0 20px;
+}
+.callback__item span {
+  color: #6b73eb;
+}
+.callback__item input, .callback__item textarea {
+  border: 1px solid #b1b6ff;
+  padding: 6px 12px;
+  margin: 10px 0;
+  color: #6b73eb;
+  width: 100%;
+}
+.callback__item input[name=button] {
+  color: #ffffff;
+  background: #4e5fc0;
+  cursor: pointer;
+  align-self: center;
+  width: 50%;
+  transition: all 0.5s ease;
+}
+.callback__item input[name=button]:hover {
+  background: #1620b1;
+  transform: scale(1.2);
+}
+.callback__item textarea {
+  resize: none;
+  height: 150px;
+}
+
 @media (max-width: 900px) {
   .product-box {
     flex-wrap: wrap;
@@ -576,6 +626,10 @@ body {
 
   .hamburger__element input {
     left: 0;
+  }
+
+  .callback__form {
+    max-height: none;
   }
 }
 @media (max-width: 768px) {
@@ -631,6 +685,10 @@ body {
   .hamburger__group {
     flex: 0 0 48%;
   }
+
+  .callback__item div {
+    margin: 0 30px 0 20px;
+  }
 }
 @media (max-width: 540px) {
   .header__top {
@@ -677,5 +735,12 @@ body {
   }
   .hamburger__total-order {
     font-size: 1.1rem;
+  }
+
+  .callback__form {
+    padding-left: 0;
+  }
+  .callback__item div {
+    margin: 0 10px 0 20px;
   }
 }/*# sourceMappingURL=style.css.map */
