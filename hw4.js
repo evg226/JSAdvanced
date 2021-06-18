@@ -10,7 +10,7 @@ headerMenu.append(menuItemCatalogV4);
 function renderCatalogPageV4() {
     breadcrumbMap.innerHTML = ` / ${menuItemCatalogV4.innerHTML}`;
     pageContent.innerHTML = "";
-    pageHeader.innerHTML = menuItemCatalogV4.innerHTML;
+    pageHeader.innerHTML = menuItemCatalogV4.innerHTML+" Reg expression";
 
     // п.1,2 выводятся в консоли ********************
     let text = `

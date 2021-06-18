@@ -13,7 +13,7 @@ headerMenu.append(menuItemCatalog);
 function renderCatalogPage() {
     breadcrumbMap.innerHTML = ` / ${menuItemCatalog.innerHTML}`;
     pageContent.innerHTML = "";
-    pageHeader.innerHTML = menuItemCatalog.innerHTML;
+    pageHeader.innerHTML = menuItemCatalog.innerHTML+" - процедурное программирование";
 
     const products = [
         { id: 1, title: 'Notebook', price: 2000 },

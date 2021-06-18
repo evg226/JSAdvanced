@@ -10,7 +10,7 @@ headerMenu.append(menuItemCatalogV3);
 function renderCatalogPageV3() {
     breadcrumbMap.innerHTML = ` / ${menuItemCatalogV3.innerHTML}`;
     pageContent.innerHTML = "";
-    pageHeader.innerHTML = menuItemCatalogV3.innerHTML;
+    pageHeader.innerHTML = menuItemCatalogV3.innerHTML+" - ООП 2 сущности";
 
     const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses'; 
     let myCart = new CartPro("#cart",API);

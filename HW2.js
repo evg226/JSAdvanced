@@ -16,7 +16,7 @@ headerMenu.append(menuItemCatalogV2);
 function renderCatalogPageV2() {
     breadcrumbMap.innerHTML = ` / ${menuItemCatalogV2.innerHTML}`;
     pageContent.innerHTML = "";
-    pageHeader.innerHTML = menuItemCatalogV2.innerHTML;
+    pageHeader.innerHTML = menuItemCatalogV2.innerHTML+" - ООП";
 
     let productList = new ProductList(".page__content");
 
@@ -160,7 +160,7 @@ headerMenu.append(menuItemHamburger);
 function renderHamburger() {
     breadcrumbMap.innerHTML = ` / ${menuItemHamburger.innerHTML}`;
     pageContent.innerHTML = "";
-    pageHeader.innerHTML = menuItemHamburger.innerHTML;
+    pageHeader.innerHTML = menuItemHamburger.innerHTML+" - ООП";
 
     let hamb = new HamburgerPage(".page__content");
 }
